@@ -1,0 +1,98 @@
+.history-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.history-container h1 {
+  text-align: center;
+  color: #38761d;
+  margin-bottom: 20px;
+  font-size: 2.2em;
+}
+
+.summary-text {
+  text-align: center;
+  color: #6aa84f;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.notes-list {
+  display: grid;
+  gap: 20px;
+}
+
+.note-card {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9fff8;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 12px rgba(56, 118, 29, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #c8e6c9;
+  font-weight: bold;
+}
+
+.note-date {
+  color: #38761d;
+}
+
+.note-duration {
+  color: #6aa84f;
+}
+
+.note-experience-title {
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.note-experience-content {
+    white-space: pre-wrap; /* Mantiene saltos de línea y espacios */
+    color: #777;
+    line-height: 1.5;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px;
+}
+
+.empty-state p {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.call-to-action-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6aa84f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.call-to-action-link:hover {
+    background-color: #38761d;
+}

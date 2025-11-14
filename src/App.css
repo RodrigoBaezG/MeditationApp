@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@reference "tailwindcss";
+
+/* Estilos de la cabecera */
+.main-header {
+  /* ✨ Añadimos 'sticky', 'top-0' y 'z-10' para fijar la barra. */
+  @apply bg-green-800 shadow-lg w-full sticky top-0 z-10 flex; 
+}
+
+.navbar-nav {
+  /* max-w-5xl, centrado (mx-auto), y padding responsive */
+  @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 justify-center;
+}
+
+.nav-list {
+  @apply flex space-x-6 py-4;
+}
+
+.nav-link {
+  /* Color blanco, hover a verde claro, negrita, transición */
+  @apply text-white hover:text-green-200 font-bold transition duration-150;
+}
+
+/* Estilos para el contenedor principal de la App */
+.app-container {
+  @apply min-h-screen bg-gray-50;
+}
+
+/* Estilos para el contenido principal (main) */
+main {
+  /* max-w-5xl, centrado, y padding responsive */
+  @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+}
