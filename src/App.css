@@ -5,6 +5,8 @@
 
 
 /* Estilos de la cabecera */
+
+
 .main-header {
   /* ✨ Añadimos 'sticky', 'top-0' y 'z-10' para fijar la barra. */
   @apply bg-(--color-primary-dark) shadow-lg w-full sticky top-0 z-10 flex; 

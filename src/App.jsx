@@ -19,16 +19,16 @@ function App() {
             {/* Aplicamos la clase semántica 'nav-list' */}
             <ul className="nav-list">
               <li>
-                <Link to="/" className="nav-link">Inicio</Link>
+                <Link to="/" className="nav-link">Home</Link>
               </li>
               <li>
-                <Link to="/instructions" className="nav-link">Instrucciones</Link>
+                <Link to="/instructions" className="nav-link">Instructions</Link>
               </li>
               <li>
-                <Link to="/new-meditation" className="nav-link">Nueva Meditación</Link>
+                <Link to="/new-meditation" className="nav-link">Ne meditation</Link>
               </li>
               <li>
-                <Link to="/history" className="nav-link">Historial</Link>
+                <Link to="/history" className="nav-link">History</Link>
               </li>
             </ul>
           </nav>

@@ -23,5 +23,5 @@
 }
 
 .info-section {
-    @apply flex flex-col items-center p-6 bg-white rounded-lg shadow-md;
+    @apply flex flex-col items-center p-6 bg-white rounded-lg text-center;
 }
