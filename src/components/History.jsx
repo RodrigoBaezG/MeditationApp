@@ -13,11 +13,11 @@ const formatTotalTime = (totalMinutes) => {
     // Construir la cadena de tiempo
     let timeString = '';
     if (hours > 0) {
-        timeString += `${hours} hora${hours !== 1 ? 's' : ''}`;
+        timeString += `${hours} hour${hours !== 1 ? 's' : ''}`;
     }
     if (remainingMinutes > 0) {
         if (hours > 0) timeString += ' y ';
-        timeString += `${remainingMinutes} minuto${remainingMinutes !== 1 ? 's' : ''}`;
+        timeString += `${remainingMinutes} minute${remainingMinutes !== 1 ? 's' : ''}`;
     }
     
     return timeString.trim();
@@ -63,7 +63,7 @@ const History = () => {
         <div className="history-container">
             {/* ✨ CLASE SEMÁNTICA: history-title */}
             <h1 className="history-title">
-                Meditation tracking 🧘
+                Meditation record 🧘
             </h1>
             
             {/* SECCIÓN DE RESUMEN DEL TIEMPO TOTAL */}
@@ -112,7 +112,7 @@ const History = () => {
                                 </p>
                                 {/* ✨ CLASE SEMÁNTICA: note-experience */}
                                 <p className="note-experience">
-                                    {note.experience || "Sin notas de experiencia."}
+                                    {note.experience || "Not notes yet."}
                                 </p>
                             </div>
                         </div>

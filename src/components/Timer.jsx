@@ -113,7 +113,7 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
 
       {/* ✨ Clase semántica */}
       <h1 className="timer-title">
-        {isRunning ? (isPaused ? 'Meditación Pausada' : 'Meditando...') : 'Ready to Meditate'}
+        {isRunning ? (isPaused ? 'Meditation Paused' : 'Meditating...') : 'Ready to Meditate'}
       </h1>
       
       {/* ✨ Clase semántica */}

@@ -62,7 +62,7 @@ const NewMeditation = () => {
       const existingNotes = JSON.parse(localStorage.getItem('meditationNotes') || '[]');
       const updatedNotes = [newNote, ...existingNotes];
       localStorage.setItem('meditationNotes', JSON.stringify(updatedNotes));
-      alert(`¡Meditación de ${durationMinutes} minutos registrada con éxito!`);
+      alert(`¡Meditation of${durationMinutes} minutes finished!`);
       
       setIsFinished(false);
       setDurationInSeconds(0);
@@ -95,16 +95,16 @@ const NewMeditation = () => {
       // CLASE SEMÁNTICA: Contenedor principal del formulario
       <div className="meditation-form-container">
         <h1 className="form-title">
-          ¡Meditación Completada! 🔔
+          ¡Meditation finished! 🔔
         </h1>
         <p className="form-subtitle">
-          Guarda tu experiencia de <span className="font-bold text-green-700">{durationMinutes} minutos</span>.
+          Save and explain your <span className="font-bold text-green-700">{durationMinutes} minutes</span> experience.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Campo de Fecha */}
           <div className="form-group">
-            <label htmlFor="date" className="form-label">Fecha:</label>
+            <label htmlFor="date" className="form-label">Date:</label>
             <input 
               id="date" 
               type="date" 
@@ -118,10 +118,10 @@ const NewMeditation = () => {
 
           {/* Campo de Duración */}
           <div className="form-group">
-            <label className="form-label">Duración:</label>
+            <label className="form-label">Duration:</label>
             <input 
               type="text" 
-              value={`${durationMinutes} minutos`} 
+              value={`${durationMinutes} minutes`} 
               // CLASE SEMÁNTICA: Input de información
               className="form-input-base duration-info-input" 
               readOnly 
@@ -130,13 +130,13 @@ const NewMeditation = () => {
 
           {/* Campo de Experiencia */}
           <div className="form-group">
-            <label htmlFor="experience" className="form-label">Experiencia y Notas:</label>
+            <label htmlFor="experience" className="form-label">Experience and notes:</label>
             <textarea 
               id="experience" 
               value={experience} 
               onChange={(e) => setExperience(e.target.value)} 
               rows="6" 
-              placeholder="Describe cómo te sentiste..." 
+              placeholder="Describe your experience" 
               required 
               // CLASE SEMÁNTICA: Input base
               className="form-input-base"
@@ -148,7 +148,7 @@ const NewMeditation = () => {
             // CLASE SEMÁNTICA: Botón de envío
             className="submit-button"
           >
-            Guardar Nota
+            Save
           </button>
         </form>
       </div>
