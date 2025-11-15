@@ -75,5 +75,5 @@
 .back-button-corner {
   /* absolute top-4 left-4 text-gray-500 hover:text-gray-800 transition duration-150 text-sm font-semibold */
   color: var(--color-text-medium);
-  @apply absolute top-4 left-4 transition duration-150 text-sm font-semibold hover:text-[var(--color-text-dark)];
+  @apply absolute top-4 left-4 transition duration-150 text-sm font-semibold hover:text-(--color-text-dark);
 }

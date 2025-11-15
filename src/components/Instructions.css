@@ -6,7 +6,7 @@
   @apply max-w-4xl mx-auto p-8 lg:p-10 mt-10;
   
   /* background-color: #f7f3f0; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-  @apply bg-[var(--color-background-light)] rounded-xl shadow-2xl;
+  @apply bg-(--color-background-light) rounded-xl shadow-2xl;
   
   /* font-family: 'Arial', sans-serif; */
   @apply font-sans;
@@ -22,13 +22,13 @@
 /* Texto de introducción y cierre */
 .intro-text, .closing-text {
   /* text-align: center; font-style: italic; margin-bottom: 30px; color: #555; */
-  @apply text-center italic mb-8 text-lg text-[var(--color-text-medium)];
+  @apply text-center italic mb-8 text-lg text-(--color-text-medium);
 }
 
 /* Tarjeta de cada paso */
 .step-card {
   /* background-color: #ffffff; padding: 20px; border-left: 5px solid #6aa84f; */
-  @apply bg-[var(--color-background-card)] p-6 border-l-4 rounded-lg shadow-md;
+  @apply bg-(--color-background-card) p-6 border-l-4 rounded-lg shadow-md;
   
   /* border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); margin-bottom: 20px; */
   @apply mb-5;
@@ -56,5 +56,5 @@
 /* Ítem de la lista */
 .step-card li {
   /* margin-bottom: 8px; color: #333; */
-  @apply mb-2 text-[var(--color-text-dark)];
+  @apply mb-2 text-(--color-text-dark);
 }
