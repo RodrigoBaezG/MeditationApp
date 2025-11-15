@@ -91,7 +91,7 @@ const History = () => {
                         // ✨ CLASE SEMÁNTICA: call-to-action-link
                         className="call-to-action-link"
                     >
-                        Start a new meditation session
+                        New meditation session
                     </Link>
                 </div>
             ) : (
