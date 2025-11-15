@@ -181,7 +181,7 @@ const NewMeditation = () => {
         onClick={goToHome}
         className="back-to-home-link"
       >
-        ← Volver a Inicio
+        ← Home
       </button>
     </div>
   );
