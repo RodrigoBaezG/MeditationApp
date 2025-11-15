@@ -12,7 +12,7 @@ const Home = () => {
                 <h1 className="main-title">Letting be Meditation</h1>
                 <p className="tagline">Find peace within you.</p>
                 <img 
-                    src="../assets/img/Home.jpg" // <-- Reemplaza esto con la ruta real de tu imagen
+                    src="../src/assets/img/Home.jpg" // <-- Reemplaza esto con la ruta real de tu imagen
                     alt="Small decorative leaf" 
                     // max-h-5 establece la altura máxima a 1.25rem (20px)
                     // mx-auto centra la imagen si es un elemento de bloque
