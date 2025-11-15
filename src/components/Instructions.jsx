@@ -15,24 +15,24 @@ const Instructions = () => {
                     <li>Thoughts produce physical sensations.</li>
                     <li>Emotions produce physical sensations.</li>
                     <li>Energy is behind thoughts and emotions.</li>
-                    <li>By stop resisting them, that energy is disipated.</li>
-                    <li>Without that energy, thoughts and emotions colapse themselves.</li>
-                    <li>When thoughts and emotions colapse, you get closer to your natural state: Peace.</li>
+                    <li>When we stop resisting the sensations caused by thoughts and emotions, the energy behind them dissipates progressively.</li>
+                    <li>Without that energy, thoughts and emotions collapse themselves.</li>
+                    <li>When thoughts and emotions collapse, you get closer to your natural state: Peace.</li>
                     <li>When everything is gone, Peace is the only thing that remains.</li>
-                    <li>If there is not peace, we are resisting something.</li>
+                    <li>If we feel no peace, it means we are resisting something.</li>
                 </ul>
             </div>
 
             <div className="step-card">
                 <h2>Letting Be meditation</h2>
                 <ul>
-                    <li>Be aware that you always have a physical experience.</li>
+                    <li>Be aware that you are always having a physical experience.</li>
                     <li>Pay atention to that physical experience. Pay atention to those physical sensations.</li>
                     <li>See how you can stop resisting the physical sensations. Keep doing that. Keep noticing them.</li>
                     <li>No matter what, take your atention continuously to those physical sensations and stop resisting them.</li>
                     <li>If you find pain, stop resisting the physical sensation.</li>
                     <li>If you find sadness, stop resisting the physical sensation.</li>
-                    <li>If you feel unconfortable, stop resisting the physical sensation.</li>
+                    <li>If you feel uncomfortable, stop resisting the physical sensation.</li>
                     <li>If you find desire, stop resisting the physical sensation.</li>
                     <li>If you find nothing, stop resisting the physical sensation.</li>
                     <li>Whatever you find in the present moment, that is what you need to stop resisting.</li>
@@ -41,7 +41,7 @@ const Instructions = () => {
             </div>
 
             <p className="closing-text">
-                Stop resisting means surrender. It's a habit we can build moment by moment. It takes practice. Be gentle with yourself. We all do the best we can.
+                To stop resisting means surrender. It's a habit we can build moment by moment. It takes practice. Be gentle with yourself. We all do the best we can.
             </p>
         </div>
     );
