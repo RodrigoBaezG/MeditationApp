@@ -6,37 +6,22 @@
 }
 
 .hero-section {
-    @apply text-center p-8 bg-green-100 rounded-xl shadow-lg;
+    /* Aquí podemos usar la variable para un color de fondo plano si no usamos utilidades */
+    background-color: var(--color-background-light); 
+    
+    /* Para el resto de las utilidades, seguimos usando @apply */
+    @apply text-center p-8 rounded-xl shadow-lg;
 }
 
 .main-title {
-    @apply text-5xl font-extrabold text-green-800 mb-2;
+    /* ✨ Aquí usamos la variable en una propiedad CSS directa */
+    @apply text-5xl font-extrabold mb-2 text-(--color-primary-dark);
 }
 
 .tagline {
-    @apply text-xl italic text-green-600 mb-6;
-}
-
-.image-placeholder img {
-    @apply rounded-lg shadow-md w-full h-auto max-w-md mx-auto;
-}
-
-.navigation-links {
-    @apply text-center pb-6 border-b-2 border-green-600;
-}
-
-.links-row {
-    @apply flex justify-center items-center space-x-4 flex-wrap;
-}
-
-.nav-link-home { /* Usamos un nombre diferente para evitar colisión con App.css */
-    @apply text-lg text-gray-700 hover:text-green-800 font-medium p-2 rounded-full hover:bg-green-200 transition duration-150 flex items-center;
-}
-
-.separator {
-    @apply text-green-600 text-2xl font-light;
+    @apply text-xl italic text-(--color-primary-dark);
 }
 
 .info-section {
-    @apply p-6 bg-white rounded-lg shadow-md;
+    @apply flex flex-col items-center p-6 bg-white rounded-lg shadow-md;
 }

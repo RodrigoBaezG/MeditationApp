@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import './Timer.css'; // ✨ Importamos el nuevo CSS
 
 const formatTime = (seconds) => {
   const minutes = Math.floor(seconds / 60);
@@ -10,19 +11,16 @@ const formatTime = (seconds) => {
   return `${paddedMinutes}:${paddedSeconds}`;
 };
 
-const Timer = ({ initialTime, onFinish, onCancel, onBack }) => { // ✨ Recibimos onBack
+const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
   const [timeLeft, setTimeLeft] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false); 
   const [isPaused, setIsPaused] = useState(false);
 
-  // ... (handleFinishCallback se mantiene igual) ...
   const handleFinishCallback = useCallback(() => {
     new Audio('https://s3.amazonaws.com/iamnapo/audios/gong.mp3').play();
     onFinish(); 
   }, [onFinish]);
 
-
-  // ... (Lógica del Temporizador useEffect se mantiene igual) ...
   useEffect(() => {
     if (isRunning && timeLeft === 0) {
       handleFinishCallback();
@@ -49,28 +47,25 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => { // ✨ Recibimo
   const handlePause = () => { setIsPaused(true); };
   const handleContinue = () => { setIsPaused(false); };
   
-  // Detiene y cancela la sesión (vuelve a la vista de selección - onCancel)
   const handleStop = () => {
     setIsRunning(false); 
     onCancel(); 
   };
 
-  // ✨ Manejador para el botón "Atrás"
   const handleBack = () => {
-    // Detener si está corriendo, aunque onBack hará que se desmonte
     if (isRunning) setIsRunning(false); 
-    onBack(); // Llama a goBackToSelection del padre
+    onBack(); 
   };
   
   // --- Renderizado de Botones y Diseño ---
   const renderControlButtons = () => {
-    // ... (lógica de renderizado de botones, se mantiene igual) ...
     
     if (!isRunning && timeLeft === initialTime) {
       return (
         <button 
           onClick={handleStart}
-          className="px-8 py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-150 shadow-md transform hover:scale-105"
+          // ✨ Usamos las clases semánticas
+          className="control-button-base control-button-start-continue"
         >
           ▶️ Iniciar Meditación
         </button>
@@ -81,7 +76,8 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => { // ✨ Recibimo
       return (
         <button 
           onClick={handleContinue}
-          className="px-8 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 shadow-md transform hover:scale-105"
+          // ✨ Usamos las clases semánticas
+          className="control-button-base control-button-start-continue"
         >
           ▶️ Continuar
         </button>
@@ -92,7 +88,8 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => { // ✨ Recibimo
       return (
         <button 
           onClick={handlePause}
-          className="px-8 py-3 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600 transition duration-150 shadow-md transform hover:scale-105"
+          // ✨ Usamos las clases semánticas
+          className="control-button-base control-button-pause"
         >
           ⏸️ Pausar
         </button>
@@ -103,29 +100,33 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => { // ✨ Recibimo
   };
 
   return (
-    <div className="max-w-md mx-auto p-8 bg-white rounded-xl shadow-2xl text-center relative"> {/* Añadimos relative */}
+    // ✨ Clase semántica
+    <div className="timer-container">
       
-      {/* ✨ Botón "Atrás" en la esquina superior izquierda */}
+      {/* ✨ Clase semántica */}
       <button
         onClick={handleBack}
-        className="absolute top-4 left-4 text-gray-500 hover:text-gray-800 transition duration-150 text-sm font-semibold"
+        className="back-button-corner"
       >
         ← Elegir otra
       </button>
 
-      <h1 className="text-4xl font-bold text-green-700 mb-6 mt-4">
+      {/* ✨ Clase semántica */}
+      <h1 className="timer-title">
         {isRunning ? (isPaused ? 'Meditación Pausada' : 'Meditando...') : 'Listo para iniciar'}
       </h1>
       
-      <div className="text-8xl font-mono text-green-900 mb-10 p-6 border-4 border-green-300 rounded-full inline-block bg-green-50 shadow-inner">
+      {/* ✨ Clase semántica */}
+      <div className="time-display">
         {formatTime(timeLeft)}
       </div>
       
       {renderControlButtons()}
       
+      {/* ✨ Clase semántica */}
       <button 
         onClick={handleStop}
-        className="mt-8 ml-4 px-6 py-2 text-sm text-red-600 border border-red-600 rounded-full hover:bg-red-50 transition duration-150"
+        className="stop-button"
       >
         ◼️ Detener
       </button>

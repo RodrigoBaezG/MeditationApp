@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import './History.css'; // Asumimos que usamos Tailwind Utilities
+import './History.css'; // ✨ Importamos el nuevo CSS
 
 // Función auxiliar para formatear minutos totales a Horas y Minutos (HH:MM)
 const formatTotalTime = (totalMinutes) => {
     if (totalMinutes < 60) {
-        return `${totalMinutes} minutos`;
+        return `${totalMinutes} minutes`;
     }
     const hours = Math.floor(totalMinutes / 60);
     const remainingMinutes = totalMinutes % 60;
@@ -25,9 +25,8 @@ const formatTotalTime = (totalMinutes) => {
 
 const History = () => {
     const [notes, setNotes] = useState([]);
-    const [totalTime, setTotalTime] = useState(0); // ✨ Estado para el tiempo total
+    const [totalTime, setTotalTime] = useState(0); 
 
-    // useEffect para cargar notas y calcular el total
     useEffect(() => {
         const loadNotes = () => {
             try {
@@ -35,8 +34,6 @@ const History = () => {
                 if (storedNotes) {
                     const parsedNotes = JSON.parse(storedNotes);
                     setNotes(parsedNotes);
-
-                    // ✨ Cálculo del tiempo total
                     const totalDuration = parsedNotes.reduce((sum, note) => sum + note.duration, 0);
                     setTotalTime(totalDuration);
                 } else {
@@ -53,9 +50,8 @@ const History = () => {
         loadNotes();
     }, []);
 
-    // Función para formatear la fecha a un formato legible
     const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString('es-ES', {
+        return new Date(dateString).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
@@ -63,46 +59,59 @@ const History = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-xl space-y-6">
-            <h1 className="text-4xl font-bold text-center text-green-800 border-b pb-4 mb-4">
-                Historial de Meditación 🧘
+        // ✨ CLASE SEMÁNTICA: history-container
+        <div className="history-container">
+            {/* ✨ CLASE SEMÁNTICA: history-title */}
+            <h1 className="history-title">
+                Meditation tracking 🧘
             </h1>
             
-            {/* ✨ SECCIÓN DE RESUMEN DEL TIEMPO TOTAL */}
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200 text-center shadow-sm">
-                <h2 className="text-xl font-semibold text-green-800 mb-2">
-                    Tiempo Total Meditado:
+            {/* SECCIÓN DE RESUMEN DEL TIEMPO TOTAL */}
+            {/* ✨ CLASE SEMÁNTICA: total-time-summary */}
+            <div className="total-time-summary">
+                {/* ✨ CLASE SEMÁNTICA: summary-title */}
+                <h2 className="summary-title">
+                    Total Time Meditated:
                 </h2>
-                <p className="text-4xl font-extrabold text-green-700">
+                {/* ✨ CLASE SEMÁNTICA: summary-value */}
+                <p className="summary-value">
                     {formatTotalTime(totalTime)}
                 </p>
             </div>
-            {/* ------------------------------------- */}
-
+            
             {notes.length === 0 ? (
-                <div className="text-center p-10 bg-gray-50 rounded-lg">
-                    <p className="text-lg text-gray-600 mb-4">
-                        Aún no tienes notas registradas.
+                // ✨ CLASE SEMÁNTICA: empty-state
+                <div className="empty-state">
+                    {/* ✨ CLASE SEMÁNTICA: empty-state-text */}
+                    <p className="empty-state-text">
+                        Not meditated yet. Start your first session!
                     </p>
                     <Link 
                         to="/new-meditation" 
-                        className="text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition duration-150 font-semibold"
+                        // ✨ CLASE SEMÁNTICA: call-to-action-link
+                        className="call-to-action-link"
                     >
-                        Comenzar una nueva meditación
+                        Start a new meditation session
                     </Link>
                 </div>
             ) : (
-                <div className="space-y-4">
+                // ✨ CLASE SEMÁNTICA: notes-list-wrapper
+                <div className="notes-list-wrapper">
                     {notes.map((note) => (
-                        <div key={note.id} className="p-5 bg-white border-l-4 border-green-600 rounded-lg shadow-md flex justify-between items-start">
-                            <div className="flex-grow">
-                                <p className="text-sm text-gray-500 mb-1">
-                                    <span className="font-bold text-gray-700">Fecha:</span> {formatDate(note.date)}
+                        // ✨ CLASE SEMÁNTICA: note-card
+                        <div key={note.id} className="note-card">
+                            {/* ✨ CLASE SEMÁNTICA: note-info-group */}
+                            <div className="note-info-group">
+                                {/* ✨ CLASES SEMÁNTICAS: note-date & note-date-label */}
+                                <p className="note-date">
+                                    <span className="note-date-label">Date:</span> {formatDate(note.date)}
                                 </p>
-                                <p className="text-lg font-semibold text-green-700 mb-2">
-                                    {note.duration} minutos
+                                {/* ✨ CLASE SEMÁNTICA: note-duration */}
+                                <p className="note-duration">
+                                    {note.duration} minutes
                                 </p>
-                                <p className="text-gray-700 italic border-t pt-2 mt-2">
+                                {/* ✨ CLASE SEMÁNTICA: note-experience */}
+                                <p className="note-experience">
                                     {note.experience || "Sin notas de experiencia."}
                                 </p>
                             </div>

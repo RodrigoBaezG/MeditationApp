@@ -2,51 +2,49 @@ import React from 'react';
 import './Instructions.css'; // Importa el archivo CSS
 
 const Instructions = () => {
-  return (
-    <div className="instructions-container">
-      <h1>Guía Básica para la Meditación</h1>
-      <p className="intro-text">
-        Bienvenido/a. Tómate unos minutos para relajarte y encontrar un espacio tranquilo. Estas son las instrucciones fundamentales para comenzar tu práctica.
-      </p>
+    return (
+        <div className="instructions-container">
+            <h1>How do we practice the Letting Be Meditation?</h1>
+            <p className="intro-text">
+                Welcome! Take a few minutes to read these instructions carefully before starting your meditation practice.
+            </p>
 
-      <div className="step-card">
-        <h2>1. Encuentra tu Postura</h2>
-        <ul>
-          <li>Siéntate en una silla con los pies planos en el suelo o en un cojín con las piernas cruzadas.</li>
-          <li>Mantén la espalda **recta pero no rígida**. Imagina un hilo tirando suavemente de tu coronilla hacia el cielo.</li>
-          <li>Las manos pueden descansar suavemente sobre tus muslos o regazo.</li>
-        </ul>
-      </div>
+            <div className="step-card">
+                <h2>Previous concepts</h2>
+                <ul>
+                    <li>Thoughts produce physical sensations.</li>
+                    <li>Emotions produce physical sensations.</li>
+                    <li>Energy is behind thoughts and emotions.</li>
+                    <li>By stop resisting them, that energy is disipated.</li>
+                    <li>Without that energy, thoughts and emotions colapse themselves.</li>
+                    <li>When thoughts and emotions colapse, you get closer to your natural state: Peace.</li>
+                    <li>When everything is gone, Peace is the only thing that remains.</li>
+                    <li>If there is not peace, we are resisting something.</li>
+                </ul>
+            </div>
 
-      <div className="step-card">
-        <h2>2. Cierra los Ojos Suavemente</h2>
-        <ul>
-          <li>Cierra los ojos o déjalos ligeramente entreabiertos con la mirada fija en el suelo, a unos metros de distancia.</li>
-          <li>Esto ayuda a **minimizar las distracciones** visuales y dirigir tu atención hacia adentro.</li>
-        </ul>
-      </div>
-      
-      <div className="step-card">
-        <h2>3. Concéntrate en la Respiración</h2>
-        <ul>
-          <li>Dirige tu atención a la **sensación de la respiración**. Siente el aire entrar y salir por tu nariz o el movimiento de tu abdomen.</li>
-          <li>No intentes cambiar tu respiración; simplemente obsérvala tal como es: **sin esfuerzo, natural**.</li>
-        </ul>
-      </div>
+            <div className="step-card">
+                <h2>Letting Be meditation</h2>
+                <ul>
+                    <li>Be aware that you always have a physical experience.</li>
+                    <li>Pay atention to that physical experience. Pay atention to those physical sensations.</li>
+                    <li>See how you can stop resisting the physical sensations. Keep doing that. Keep noticing them.</li>
+                    <li>No matter what, take your atention continuously to those physical sensations and stop resisting them.</li>
+                    <li>If you find pain, stop resisting the physical sensation.</li>
+                    <li>If you find sadness, stop resisting the physical sensation.</li>
+                    <li>If you feel unconfortable, stop resisting the physical sensation.</li>
+                    <li>If you find desire, stop resisting the physical sensation.</li>
+                    <li>If you find nothing, stop resisting the physical sensation.</li>
+                    <li>Whatever you find in the present moment, that is what you need to stop resisting.</li>
+                    <li>Keep doing that during the selected time for your meditation. Close your eyes if needed.</li>
+                </ul>
+            </div>
 
-      <div className="step-card">
-        <h2>4. Maneja la Distracción (El 'Mono Loco')</h2>
-        <ul>
-          <li>Es normal que la mente divague (pensamientos, ruidos, sensaciones). Esto es parte del proceso.</li>
-          <li>Cuando notes que tu mente se ha ido, **reconoce el pensamiento sin juzgarlo** y gentilmente, pero con firmeza, **devuelve tu atención a la respiración**.</li>
-        </ul>
-      </div>
-      
-      <p className="closing-text">
-        Comienza con 5 o 10 minutos al día. La clave es la **consistencia**. ¡Feliz práctica!
-      </p>
-    </div>
-  );
+            <p className="closing-text">
+                Stop resisting means surrender. It's a habit we can build moment by moment. It takes practice. Be gentle with yourself. We all do the best we can.
+            </p>
+        </div>
+    );
 };
 
 export default Instructions;

@@ -1,10 +1,13 @@
+@import url('./styles.css');
+
 @import "tailwindcss";
 @reference "tailwindcss";
+
 
 /* Estilos de la cabecera */
 .main-header {
   /* ✨ Añadimos 'sticky', 'top-0' y 'z-10' para fijar la barra. */
-  @apply bg-green-800 shadow-lg w-full sticky top-0 z-10 flex; 
+  @apply bg-(--color-primary-dark) shadow-lg w-full sticky top-0 z-10 flex; 
 }
 
 .navbar-nav {
@@ -18,7 +21,7 @@
 
 .nav-link {
   /* Color blanco, hover a verde claro, negrita, transición */
-  @apply text-white hover:text-green-200 font-bold transition duration-150;
+  @apply text-white hover:text-(--color-primary-light) font-bold transition duration-150;
 }
 
 /* Estilos para el contenedor principal de la App */
