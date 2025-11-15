@@ -67,7 +67,7 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
           // ✨ Usamos las clases semánticas
           className="control-button-base control-button-start-continue"
         >
-          ▶️ Iniciar Meditación
+          ▶️ Start meditation
         </button>
       );
     }
@@ -91,7 +91,7 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
           // ✨ Usamos las clases semánticas
           className="control-button-base control-button-pause"
         >
-          ⏸️ Pausar
+          ⏸️ Pause
         </button>
       );
     }
@@ -108,12 +108,12 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
         onClick={handleBack}
         className="back-button-corner"
       >
-        ← Elegir otra
+        ← Choose time
       </button>
 
       {/* ✨ Clase semántica */}
       <h1 className="timer-title">
-        {isRunning ? (isPaused ? 'Meditación Pausada' : 'Meditando...') : 'Listo para iniciar'}
+        {isRunning ? (isPaused ? 'Meditación Pausada' : 'Meditando...') : 'Ready to Meditate'}
       </h1>
       
       {/* ✨ Clase semántica */}
@@ -128,7 +128,7 @@ const Timer = ({ initialTime, onFinish, onCancel, onBack }) => {
         onClick={handleStop}
         className="stop-button"
       >
-        ◼️ Detener
+        ◼️ Stop
       </button>
     </div>
   );
