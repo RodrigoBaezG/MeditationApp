@@ -25,7 +25,7 @@ function App() {
                 <Link to="/instructions" className="nav-link">Instructions</Link>
               </li>
               <li>
-                <Link to="/new-meditation" className="nav-link">Ne meditation</Link>
+                <Link to="/new-meditation" className="nav-link">New meditation</Link>
               </li>
               <li>
                 <Link to="/history" className="nav-link">History</Link>
