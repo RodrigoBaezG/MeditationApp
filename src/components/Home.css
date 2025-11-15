@@ -6,11 +6,9 @@
 }
 
 .hero-section {
-    /* Aquí podemos usar la variable para un color de fondo plano si no usamos utilidades */
-    background-color: var(--color-background-light); 
-    
+    /* Aquí podemos usar la variable para un color de fondo plano si no usamos utilidades */    
     /* Para el resto de las utilidades, seguimos usando @apply */
-    @apply text-center p-8 rounded-xl shadow-lg;
+    @apply text-center p-8 rounded-xl shadow-lg bg-white;
 }
 
 .main-title {
