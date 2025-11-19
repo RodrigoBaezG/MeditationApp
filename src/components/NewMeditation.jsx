@@ -9,7 +9,7 @@ import './NewMeditation.css';
 const meditationOptions = [1, 2, 5, 10, 15, 30];
 
 // ✨ URL base del backend
-const API_BASE_URL = 'https://meditation-api-218f.onrender.com';
+const API_BASE_URL = 'https://meditation-api-218f.onrender.com/api';
 
 const NewMeditation = () => {
   // --- ESTADOS Y CONTEXTO ---

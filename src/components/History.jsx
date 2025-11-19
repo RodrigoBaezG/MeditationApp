@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'; // Para obtener el token
 // import './History.css'; // Si usas un archivo CSS separado, descomenta
 
 // ✨ URL base del backend
-const API_BASE_URL = 'https://meditation-api-218f.onrender.com';
+const API_BASE_URL = 'https://meditation-api-218f.onrender.com/api';
 
 // =======================================================
 // 1. Funciones Auxiliares
