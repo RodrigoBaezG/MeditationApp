@@ -1,21 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Home from './components/Home'; // Asume que tienes un componente Home.jsx
+// Importamos los componentes de página
+import Home from './components/Home';
 import NewMeditation from './components/NewMeditation';
-import History from './components/History'; // Asume que tienes un componente History.jsx
-import Login from './components/Login'; // Componente de Login (generado antes)
-import SignUp from './components/SignUp'; // Componente de Registro (generado antes)
-import Navbar from './components/Navbar'; // Un componente de navegación que crearemos
+import History from './components/History';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 // =======================================================
-// Componente de Utilidad para Proteger Rutas
+// 1. Componente de Utilidad para Proteger Rutas
 // =======================================================
+/**
+ * Componente que verifica la autenticación. Si el usuario no tiene token, redirige a /login.
+ */
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
+  // Muestra un loader mientras se revisa el token en localStorage
   if (isLoading) {
-    // Muestra un loader mientras se revisa el token en localStorage
     return (
       <div className="flex justify-center items-center h-screen text-2xl font-semibold text-green-700">
         Cargando sesión...
@@ -28,14 +31,64 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  // Si está autenticado, muestra la ruta solicitada
+  // Si está autenticado, muestra el contenido de la ruta
   return children;
 };
 
+
 // =======================================================
-// Componente Navbar (Simple, para demostrar logout)
+// 2. Componente Principal de la Aplicación
 // =======================================================
-const Navbar = () => {
+const App = () => {
+  return (
+    // Se envuelve toda la aplicación en el Router
+    <Router>
+      {/* El proveedor de autenticación envuelve el layout principal */}
+      <AuthProvider>
+        <AppLayout />
+      </AuthProvider>
+    </Router>
+  );
+};
+
+// Componente de layout que contiene el Navbar y las Rutas
+const AppLayout = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 font-inter">
+      <AppNavbar /> {/* Usamos la barra de navegación */}
+      <main className="container mx-auto p-4">
+        <Routes>
+          {/* Rutas Públicas */}
+          <Route path="/" element={<Home />} />
+          <Route path="/instructions" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* Rutas Protegidas (Usan el ProtectedRoute) */}
+          <Route
+            path="/new-meditation"
+            element={<ProtectedRoute><NewMeditation /></ProtectedRoute>}
+          />
+          <Route
+            path="/history"
+            element={<ProtectedRoute><History /></ProtectedRoute>}
+          />
+
+          {/* Ruta comodín */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
+
+export default App;
+
+
+// =======================================================
+// 3. Definición ÚNICA del Navbar (AppNavbar)
+// =======================================================
+const AppNavbar = () => {
   const { isAuthenticated, logout } = useAuth();
   return (
     <nav className="bg-green-800 p-4 shadow-lg">
@@ -77,52 +130,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-
-// =======================================================
-// Componente Principal de la Aplicación
-// =======================================================
-const App = () => {
-  return (
-    // Se envuelve toda la aplicación en el Router
-    <Router>
-      {/* Se envuelve la app en el AuthProvider para que todas las rutas usen el contexto */}
-      <AuthProvider>
-        <AppLayout />
-      </AuthProvider>
-    </Router>
-  );
-};
-
-// Componente para usar el hook de navegación dentro del Router
-const AppLayout = () => {
-  return (
-    <div className="min-h-screen bg-gray-50 font-inter">
-      <Navbar />
-      <main className="container mx-auto p-4">
-        <Routes>
-          {/* Rutas Públicas */}
-          <Route path="/" element={<Home />} />
-          <Route path="/instructions" element={<Home />} /> {/* Asumiendo que Home tiene las instrucciones */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-
-          {/* Rutas Protegidas */}
-          <Route
-            path="/new-meditation"
-            element={<ProtectedRoute><NewMeditation /></ProtectedRoute>}
-          />
-          <Route
-            path="/history"
-            element={<ProtectedRoute><History /></ProtectedRoute>}
-          />
-
-          {/* Redirigir cualquier otra cosa a Home */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </main>
-    </div>
-  );
-}
-
-export default App;
