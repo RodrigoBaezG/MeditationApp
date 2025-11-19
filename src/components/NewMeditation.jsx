@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Timer from './Timer';
-import { useAuth } from '../context/AuthContext'; // ✨ Importamos el hook de autenticación
-import axios from 'axios';
+import { useAuth } from '../context/AuthContext'; // Importamos el hook de autenticación
+// Importamos el CSS si es necesario (el snippet sugiere que sí)
 import './NewMeditation.css';
 
 // Opciones de duración de meditación en minutos
@@ -13,7 +13,7 @@ const API_BASE_URL = 'http://localhost:3000/api';
 
 const NewMeditation = () => {
   // --- ESTADOS Y CONTEXTO ---
-  const { authToken, logout } = useAuth(); // ✨ Obtenemos el token y la función de logout
+  const { authToken, logout } = useAuth(); // Obtenemos el token y la función de logout
   const navigate = useNavigate();
 
   const [durationInSeconds, setDurationInSeconds] = useState(0);
@@ -25,24 +25,22 @@ const NewMeditation = () => {
 
   // --- MANEJADORES DE VISTAS Y LÓGICA ---
 
-  // Selecciona el tiempo e INICIA el Timer inmediatamente
   const selectTime = (durationMinutes) => {
     setDurationInSeconds(durationMinutes * 60);
-    setIsMeditating(true); // Monta el componente Timer
+    setIsMeditating(true);
     setIsFinished(false);
     setSaveError('');
     setExperience('');
   };
 
-  // Vuelve a la selección de tiempo 
   const goBackToSelection = useCallback(() => {
     setIsMeditating(false);
+    setIsFinished(false);
     setDurationInSeconds(0);
   }, []);
 
-  // Se ejecuta al terminar el contador
   const handleFinish = useCallback(() => {
-    setIsMeditating(false); // Desmonta el Timer (la duración final se mantiene en durationInSeconds)
+    setIsMeditating(false);
     setIsFinished(true); // Muestra el formulario
   }, []);
 
@@ -61,31 +59,41 @@ const NewMeditation = () => {
     }
 
     try {
-      // 1. Enviar la petición POST al backend con la cabecera de autorización
-      const response = await axios.post(`${API_BASE_URL}/meditations`, {
-        duration: durationMinutes,
-        date: meditationDate,
-        note: experience || null,
-      }, {
+      // 1. Petición POST usando fetch
+      const response = await fetch(`${API_BASE_URL}/meditations`, {
+        method: 'POST',
         headers: {
-          // ✨ Usamos el token del AuthContext
-          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+          // ✨ USANDO EL TOKEN JWT
+          'Authorization': `Bearer ${authToken}`,
         },
+        body: JSON.stringify({
+          duration: durationMinutes,
+          date: meditationDate,
+          note: experience || null, // Envía null si el campo de nota está vacío
+        }),
       });
 
-      // 2. Si es exitoso, redirigir al historial
+      // 2. Manejo de la respuesta
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          // Token inválido o expirado. Forzamos el logout.
+          logout();
+          throw new Error('Tu sesión ha expirado. Por favor, vuelve a iniciar sesión.');
+        }
+        // Manejo de otros errores del backend (ej: 400 Bad Request)
+        throw new Error(data.message || 'Error desconocido al guardar la meditación.');
+      }
+
+      // 3. Si es exitoso, redirigir al historial
       alert('¡Meditación registrada con éxito!');
       navigate('/history');
 
     } catch (err) {
       console.error('Error al guardar la meditación:', err);
-      if (err.response && err.response.status === 401) {
-        // Token inválido o expirado. Forzamos el logout.
-        setSaveError('Tu sesión ha expirado. Por favor, vuelve a iniciar sesión.');
-        logout();
-      } else {
-        setSaveError(err.response?.data?.message || 'Error desconocido al guardar la meditación.');
-      }
+      setSaveError(err.message);
     }
   };
 
@@ -95,6 +103,7 @@ const NewMeditation = () => {
   // 1. Vista del Timer
   if (isMeditating) {
     return (
+      // Asumimos que Timer.jsx existe en el mismo directorio
       <Timer
         initialTime={durationInSeconds}
         onFinish={handleFinish}
@@ -105,10 +114,10 @@ const NewMeditation = () => {
 
   // 2. Vista del Formulario (al finalizar la meditación)
   if (isFinished) {
-    // Convertir la duración en segundos a minutos para mostrarla en el formulario
     const durationMinutes = Math.round(durationInSeconds / 60);
 
     return (
+      // Usamos la clase del snippet: .meditation-form-container
       <div className="meditation-form-container">
         <h1 className="text-3xl font-bold text-green-700 mb-2">Registro de Meditación</h1>
         <p className="subtitle">Guarda tu experiencia en el historial.</p>
@@ -123,7 +132,8 @@ const NewMeditation = () => {
                 type="number"
                 id="duration"
                 value={durationMinutes}
-                readOnly // La duración es fija, viene del Timer
+                readOnly
+                // Usamos clases de Tailwind para un look 'desactivado'
                 className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-600 cursor-not-allowed"
               />
             </div>
@@ -168,7 +178,7 @@ const NewMeditation = () => {
     );
   }
 
-  // 4. Vista de Selección de Tiempo (Por defecto)
+  // 3. Vista de Selección de Tiempo (Por defecto)
   return (
     <div className="max-w-3xl mx-auto p-8 bg-white rounded-xl shadow-xl text-center mt-10">
       <h1 className="text-3xl font-bold text-green-800 mb-6">

@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }) => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen text-2xl font-semibold text-green-700">
-        Cargando sesión...
+        Loading...
       </div>
     );
   }
@@ -98,30 +98,30 @@ const AppNavbar = () => {
         </Link>
         <div className="flex space-x-4">
           <Link to="/instructions" className="text-white hover:text-green-200 transition duration-150">
-            Instrucciones
+            Instrucctions
           </Link>
           {isAuthenticated ? (
             <>
               <Link to="/new-meditation" className="text-white hover:text-green-200 transition duration-150">
-                Meditar
+                Meditate
               </Link>
               <Link to="/history" className="text-white hover:text-green-200 transition duration-150">
-                Historial
+                History
               </Link>
               <button
                 onClick={logout}
                 className="text-red-300 hover:text-red-500 font-semibold transition duration-150"
               >
-                Cerrar Sesión
+                Logout
               </button>
             </>
           ) : (
             <>
               <Link to="/login" className="text-white hover:text-green-200 transition duration-150">
-                Iniciar Sesión
+                Login
               </Link>
               <Link to="/signup" className="text-white hover:text-green-200 transition duration-150">
-                Registrarse
+                Signup
               </Link>
             </>
           )}
