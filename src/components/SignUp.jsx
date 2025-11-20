@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Importamos el contexto de Auth
 
 // ✨ Reemplaza con la URL base de tu backend (Render o Local)
-const API_BASE_URL = 'http://localhost:3000/api/auth';
+const API_BASE_URL = 'https://meditation-api-218f.onrender.com/api/auth';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
