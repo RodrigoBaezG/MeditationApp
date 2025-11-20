@@ -31,19 +31,19 @@ const SignUp = () => {
 
             if (!response.ok) {
                 // Si el código de estado es 409 (User already exists), 400, etc.
-                throw new Error(data.message || 'Error al registrar el usuario.');
+                throw new Error(data.message || 'Error to register user.');
             }
 
             // 3. Si es exitoso, usar la función handleAuth del contexto
             handleAuth(data.token, data.user);
 
-            alert(`¡Bienvenido, ${data.user.email}! Registro exitoso.`);
+            alert(`¡Welcome, ${data.user.email}! Registered successfully.`);
             navigate('/');
 
         } catch (err) {
             console.error('Registration failed:', err);
             // 4. Mostrar el mensaje de error
-            setError(err.message || 'Error de conexión con el servidor.');
+            setError(err.message || 'Error to register user.');
         }
     };
 
