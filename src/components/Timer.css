@@ -26,9 +26,9 @@
   /* text-8xl font-mono text-green-900 mb-10 p-6 border-4 border-green-300 rounded-full inline-block bg-green-50 shadow-inner */
   color: var(--color-primary-dark);
   @apply text-8xl font-mono mb-10 p-6 border-4 rounded-full inline-block shadow-inner;
-  
+
   /* Usamos variables para el fondo y el borde del display */
-  background-color: var(--color-background-light); 
+  background-color: var(--color-background-light);
   border-color: var(--color-primary-light);
 }
 
@@ -36,7 +36,7 @@
 
 .control-button-base {
   /* px-8 py-3 text-white font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 */
-  @apply px-8 py-3 text-white font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105;
+  @apply px-8 py-3 text-(primary-dark) font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105;
 }
 
 /* Botón Iniciar / Continuar (Verde Primario) */
