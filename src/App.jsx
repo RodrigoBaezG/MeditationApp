@@ -98,7 +98,7 @@ const AppNavbar = () => {
         </Link>
         <div className="flex space-x-4">
           <Link to="/instructions" className="text-white hover:text-green-200 transition duration-150">
-            Instrucctions
+            Instructions
           </Link>
           {isAuthenticated ? (
             <>
