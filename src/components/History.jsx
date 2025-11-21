@@ -23,18 +23,18 @@ const formatDate = (dateString) => {
 // Función para formatear minutos totales a Horas y Minutos (ej: 2 horas y 30 minutos)
 const formatTotalTime = (totalMinutes) => {
     if (totalMinutes < 60) {
-        return `${totalMinutes} minutos`;
+        return `${totalMinutes} minutes`;
     }
     const hours = Math.floor(totalMinutes / 60);
     const remainingMinutes = totalMinutes % 60;
 
     let timeString = '';
     if (hours > 0) {
-        timeString += `${hours} hora${hours !== 1 ? 's' : ''}`;
+        timeString += `${hours} hour${hours !== 1 ? 's' : ''}`;
     }
     if (remainingMinutes > 0) {
         if (hours > 0) timeString += ' y ';
-        timeString += `${remainingMinutes} minuto${remainingMinutes !== 1 ? 's' : ''}`;
+        timeString += `${remainingMinutes} minute${remainingMinutes !== 1 ? 's' : ''}`;
     }
 
     return timeString.trim();
@@ -72,9 +72,9 @@ const History = () => {
                 if (response.status === 401) {
                     // Si el token es inválido/expirado, forzar el logout
                     logout();
-                    throw new Error('Sesión expirada. Por favor, inicia sesión.');
+                    throw new Error('Session expired. Please log in.');
                 }
-                throw new Error(data.message || 'Error al cargar el historial.');
+                throw new Error(data.message || 'Error loading history.');
             }
 
             // 3. Procesar datos exitosos
@@ -85,7 +85,7 @@ const History = () => {
             setTotalTime(totalMinutes);
 
         } catch (err) {
-            console.error('Error al cargar historial:', err);
+            console.error('Error loading history:', err);
             setError(err.message);
         } finally {
             setIsLoading(false);
@@ -105,8 +105,8 @@ const History = () => {
 
     if (isLoading) {
         return (
-            <div className="text-center mt-10 text-xl text-green-700">
-                Cargando tu historial de meditaciones...
+            <div className="text-center mt-10 text-xl text-(--primary-dark)">
+                <p>Loading your meditation history...</p>
             </div>
         );
     }
@@ -114,64 +114,66 @@ const History = () => {
     if (error) {
         return (
             <div className="max-w-md mx-auto mt-10 p-8 bg-red-100 text-red-700 border border-red-400 rounded-lg">
-                <p className="font-bold">Error de Carga:</p>
+                <p className="font-bold">Loading Error:</p>
                 <p>{error}</p>
-                {error.includes('expirada') && (
+                {error.includes('expired') && (
                     <button onClick={logout} className="mt-4 text-sm text-red-500 hover:underline">
-                        Ir a Iniciar Sesión
+                        Go to Login
                     </button>
                 )}
             </div>
         );
     }
 
-    // Vista principal
+    // Main view
     return (
         <div className="max-w-4xl mx-auto p-8 bg-white rounded-xl shadow-2xl mt-10">
             <h1 className="text-4xl font-extrabold text-center text-green-800 mb-4">
-                Tu Historial de Meditación 📈
+                Your Meditation History 📈
             </h1>
 
-            {/* Resumen de estadísticas */}
+            {/* Summary statistics */}
             <div className="bg-green-50 p-6 rounded-lg shadow-inner mb-8 text-center border border-green-200">
                 <p className="text-xl font-semibold text-green-700">
-                    Sesiones Completadas: <span className="text-green-900 font-extrabold">{meditations.length}</span>
+                    Sessions Completed: <span className="text-green-900 font-extrabold">{meditations.length}</span>
                 </p>
                 <p className="text-xl font-semibold text-green-700 mt-2">
-                    Tiempo Total Acumulado: <span className="text-green-900 font-extrabold">{formatTotalTime(totalTime)}</span>
+                    Total Time Accumulated: <span className="text-green-900 font-extrabold">{formatTotalTime(totalTime)}</span>
                 </p>
             </div>
 
-            {/* Si no hay meditaciones */}
+            {/* If no meditations */}
             {meditations.length === 0 ? (
                 <div className="text-center p-10 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
                     <p className="text-xl text-gray-600 mb-4">
-                        Aún no tienes meditaciones registradas.
+                        You don't have any recorded meditations yet.
                     </p>
                     <Link
                         to="/new-meditation"
                         className="inline-block text-white bg-green-600 px-6 py-3 rounded-full hover:bg-green-700 transition duration-150 font-semibold shadow-lg"
                     >
-                        Comenzar mi primera meditación
+                        Start my first meditation
                     </Link>
                 </div>
             ) : (
-                // Lista de tarjetas de meditación
+                // List of meditation cards
                 <div className="space-y-4">
                     {meditations.map((med) => (
                         <div key={med.id} className="p-5 bg-white border-l-4 border-green-600 rounded-lg shadow-md flex justify-between items-start hover:shadow-lg transition duration-200">
                             <div className="flex-grow">
                                 <div className="flex justify-between items-center mb-2">
                                     <p className="text-sm text-gray-500 font-medium">
-                                        Fecha: <span className="text-gray-700 font-semibold">{formatDate(med.meditation_date)}</span>
+                                        Date: <span className="text-gray-700 font-semibold">{formatDate(med.meditation_date)}</span>
                                     </p>
                                     <span className="text-lg font-bold text-green-700 bg-green-100 px-3 py-1 rounded-full">
                                         {med.duration_minutes} min
                                     </span>
                                 </div>
-                                <p className="text-gray-700 italic border-t pt-2 mt-2">
-                                    {med.note || "— Sin notas de experiencia. —"}
-                                </p>
+                                {med.notes && (
+                                    <p className="text-gray-600 mt-2 text-sm italic">
+                                        Notes: "{med.notes}"
+                                    </p>
+                                )}
                             </div>
                         </div>
                     ))}
