@@ -185,7 +185,7 @@ const NewMeditation = () => {
         Select your meditation duration 🧘
       </h1>
       <p className="text-gray-600 mb-8">
-        Choose a time and the timer will start automatically.
+        Choose a time and let's go.
       </p>
 
       <div className="flex flex-wrap justify-center gap-4">
