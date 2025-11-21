@@ -36,7 +36,7 @@
 
 .control-button-base {
   /* px-8 py-3 text-white font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 */
-  @apply px-8 py-3 text-(--primary-dark) font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 ccursor_pointer;
+  @apply px-8 py-3 text-(--primary-dark) font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 cursor_pointer;
 }
 
 /* Botón Iniciar / Continuar (Verde Primario) */
