@@ -163,7 +163,7 @@ const NewMeditation = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="w-full py-3 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-150 shadow-md">
+          <button type="submit" className="w-full py-3 cursor-pointer bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-150 shadow-md">
             Save Meditation
           </button>
           <button
@@ -193,7 +193,7 @@ const NewMeditation = () => {
           <button
             key={minutes}
             onClick={() => selectTime(minutes)}
-            className="p-4 w-28 bg-green-500 text-white text-xl font-bold rounded-xl hover:bg-green-600 transition duration-150 shadow-lg transform hover:scale-105"
+            className="p-4 w-28 bg-green-800 cursor-pointer text-white text-xl font-bold rounded-xl hover:bg-green-600 transition duration-150 shadow-lg transform hover:scale-105"
           >
             {minutes} min
           </button>

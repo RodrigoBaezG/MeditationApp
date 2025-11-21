@@ -10,7 +10,7 @@
 .timer-container {
   /* max-w-md mx-auto p-8 bg-white rounded-xl shadow-2xl text-center relative */
   @apply max-w-md mx-auto p-8 text-center relative;
-  background-color: var(--color-background-card);
+  /* background-color: var(--color-background-card); */
   @apply rounded-xl shadow-2xl;
 }
 
@@ -29,23 +29,22 @@
 
   /* Usamos variables para el fondo y el borde del display */
   background-color: var(--color-background-light);
-  border-color: var(--color-primary-light);
 }
 
 /* --- Botones de Control (Iniciar, Pausar, Continuar) --- */
 
 .control-button-base {
+  color: var(--color-primary-dark);
   /* px-8 py-3 text-white font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 */
-  @apply px-8 py-3 text-(--primary-dark) font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 cursor-pointer;
+  @apply px-8 py-3 font-bold rounded-lg transition duration-150 shadow-md transform hover:scale-105 cursor-pointer;
 }
 
 /* Botón Iniciar / Continuar (Verde Primario) */
-.control-button-start-continue {
-  background-color: var(--color-primary-medium);
-}
+
 
 .control-button-start-continue:hover {
-  background-color: var(--color-primary-dark);
+
+  @apply hover:bg-(--color-primary-light);
 }
 
 /* Botón Pausar (Amarillo/Naranja de estado) */
@@ -63,12 +62,12 @@
   /* mt-8 ml-4 px-6 py-2 text-sm text-red-600 border border-red-600 rounded-full hover:bg-red-50 transition duration-150 */
   color: var(--color-state-alert);
   border-color: var(--color-state-alert);
-  @apply mt-8 ml-4 px-6 py-2 text-sm border rounded-full transition duration-150;
+  @apply ml-4 px-6 py-2 text-sm border rounded-full transition duration-150 cursor-pointer;
 }
 
 .stop-button:hover {
   /* Usamos un fondo suave al pasar el ratón */
-  @apply hover:bg-red-500;
+  @apply hover:bg-red-400 text-white;
 }
 
 /* Botón Atrás (Esquina Superior) */

@@ -7,6 +7,7 @@ import NewMeditation from './components/NewMeditation';
 import History from './components/History';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Instructions from './components/Instructions';
 
 // =======================================================
 // 1. Componente de Utilidad para Proteger Rutas
@@ -60,7 +61,7 @@ const AppLayout = () => {
         <Routes>
           {/* Rutas Públicas */}
           <Route path="/" element={<Home />} />
-          <Route path="/instructions" element={<Home />} />
+          <Route path="/instructions" element={<Instructions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
 
@@ -110,7 +111,7 @@ const AppNavbar = () => {
               </Link>
               <button
                 onClick={logout}
-                className="text-red-300 hover:text-red-500 font-semibold transition duration-150"
+                className="text-gray-300 hover:text-red-500 font-semibold transition duration-150 cursor-pointer"
               >
                 Logout
               </button>
