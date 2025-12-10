@@ -51,6 +51,12 @@ const Login = () => {
         <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-xl shadow-2xl">
             <h1 className="text-3xl font-bold text-center text-green-700 mb-6">Login</h1>
 
+            <div className="my-4 text-xs">
+                <p>Demo credentials</p>
+                <p>email: example@gmail.com</p>
+                <p>password: 12345</p>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-4">
                 {error && <p className="text-red-500 text-center font-semibold border border-red-200 p-2 rounded-lg">{error}</p>}
 
